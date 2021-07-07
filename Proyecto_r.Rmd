@@ -1,0 +1,26 @@
+Proyecto
+Eduardo Javier Hevia Calderón
+# 999005037
+
+
+Importar CSV
+```{r}
+#1
+library(tidyverse)
+library(gapminder)
+library(dplyr)
+
+yearly <- read.csv(file = './deaths_handwashing.csv')
+yearly
+```
+
+```{r}
+#2
+
+yearly %>%
+  mutate(proportion_deaths = round(deaths / births * 100, 2) )
+
+yearly
+```
+
+
