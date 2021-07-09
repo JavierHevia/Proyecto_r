@@ -4,23 +4,46 @@ Eduardo Javier Hevia Calderón
 
 
 Importar CSV
-```{r}
 #1
+```{r}
 library(tidyverse)
 library(gapminder)
 library(dplyr)
+library(ggplot2)
 
 yearly <- read.csv(file = './deaths_handwashing.csv')
 yearly
 ```
-
-```{r}
 #2
+```{r}
 
-yearly %>%
-  mutate(proportion_deaths = round(deaths / births * 100, 2) )
+yearly <- yearly %>%
+  mutate(proportion_deaths = round(deaths / births, 2) )
+
 
 yearly
+
 ```
+#3
+
+```{r}
+# gráfica lineal
+yearly
+ggplot(data = yearly, aes(x=year, y= proportion_deaths, color=clinic )) + 
+  stat_smooth(se=FALSE)
+```
+
+#4
+```{r}
+monthly <- read.csv(file = './deaths_clinic_1.csv')
+monthly
+
+monthly <- monthly %>%
+  mutate(proportion_deaths = round(deaths / births, 2) )
+
+monthly
+head(monthly, 10) # primer 10 filas para mostrar
+```
+
 
 
