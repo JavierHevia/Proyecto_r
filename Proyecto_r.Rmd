@@ -44,6 +44,29 @@ monthly <- monthly %>%
 monthly
 head(monthly, 10) # primer 10 filas para mostrar
 ```
+#5
+```{r}
+monthly
+ggplot(data = monthly, aes(x= date, y=date, group = proportion_deaths)) +
+   geom_line(aes(color = proportion_deaths)) +
+    labs(y = "Fecha", 
+         x = "Proporcionar de muertos", 
+         title = "El efecto del lavado de manos", 
+         caption = "Fuente: Elavoración propia")
+```
+#6
+```{r}
+library(dplyr)
+library(tibble)
 
+monthly
+monthly %>%
+  filt
+  
+  filter( (date > as.POSIXct("1847-01-01")) ) %>%
+  mutate(handwashing_started = FALSE )
+
+
+```
 
 
