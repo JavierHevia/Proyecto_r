@@ -35,7 +35,8 @@ ggplot(data = yearly, aes(x=year, y= proportion_deaths, color=clinic )) +
 
 #4
 ```{r}
-monthly <- read.csv(file = './deaths_clinic_1.csv')
+#
+monthly <- read_csv(file = "./deaths_clinic_1.csv")
 monthly
 
 monthly <- monthly %>%
@@ -46,11 +47,13 @@ head(monthly, 10) # primer 10 filas para mostrar
 ```
 #5
 ```{r}
+library(tidyverse)
+
 monthly
-ggplot(data = monthly, aes(x= date, y=date, group = proportion_deaths)) +
-   geom_line(aes(color = proportion_deaths)) +
-    labs(y = "Fecha", 
-         x = "Proporcionar de muertos", 
+ggplot(data = monthly, aes(x= date, y=proportion_deaths)) +
+   geom_line(colour= "blue") +
+    labs(y = "Proporcionar de muertos", 
+         x = "Fecha", 
          title = "El efecto del lavado de manos", 
          caption = "Fuente: Elavoración propia")
 ```
