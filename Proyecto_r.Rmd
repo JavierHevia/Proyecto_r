@@ -61,14 +61,29 @@ ggplot(data = monthly, aes(x= date, y=proportion_deaths)) +
 ```{r}
 library(dplyr)
 library(tibble)
+library(ggplot2)
+
+
+monthly <- monthly %>%
+  mutate(handwashing_started = ifelse( date >= '1847-01-01', TRUE, FALSE))
 
 monthly
-monthly %>%
-  filt
-  
-  filter( (date > as.POSIXct("1847-01-01")) ) %>%
-  mutate(handwashing_started = FALSE )
 
+ggplot(monthly, aes(x=date, y=proportion_deaths, color=handwashing_started)) +
+  geom_line()+
+    labs(y = "Proporcionar de muertos", 
+         x = "Años", 
+         title = "Resultados del lavado de manos", 
+         caption = "Fuente: Elavoración propia")
+
+```
+#7
+```{r}
+monthly
+
+month_summary <- monthly %>%
+  group_by(handwashing_started) %>%
+  summarise(mean_proportion_deaths = median(proportion_deaths))
 
 ```
 
