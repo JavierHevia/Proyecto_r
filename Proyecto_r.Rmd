@@ -85,6 +85,7 @@ month_summary <- monthly %>%
   group_by(handwashing_started) %>%
   summarise(mean_proportion_deaths = median(proportion_deaths))
 
+month_summary
 ```
 
 
