@@ -30,7 +30,7 @@ yearly
 # gráfica lineal
 yearly
 ggplot(data = yearly, aes(x=year, y= proportion_deaths, color=clinic )) + 
-  stat_smooth(se=FALSE)
+  geom_line() #intervalo de confianza para las lineas
 ```
 
 #4
